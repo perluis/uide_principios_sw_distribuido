@@ -1,0 +1,6 @@
+sequenceDiagram
+    participant C as UdpClient
+    participant S as UdpServer
+    C->>S: datagrama HELLO {name}
+    S-->>C: datagrama IMAGE {name, message, image}
+    Note over C: si no hay respuesta en 5 s reintenta (máximo 3 veces)

@@ -1,0 +1,25 @@
+// Version reducida por UDP: el cliente envia su nombre y el servidor responde con una imagen
+// Servidor: gradle :udp:runServer            (puerto 8080)
+// Cliente:  gradle :udp:runClient            (localhost:8080; pide el nombre en una ventana)
+// Ejemplo:  gradle :udp:runClient -Phost=192.168.0.164 -Pplayer=Luis
+
+tasks.register('runServer', JavaExec) {
+    group = 'juego udp'
+    description = 'Inicia el servidor UDP'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'udp.server.UdpServer'
+    workingDir = rootProject.projectDir
+    args portArg
+}
+
+tasks.register('runClient', JavaExec) {
+    group = 'juego udp'
+    description = 'Envia el nombre al servidor UDP y muestra la imagen recibida'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'udp.client.UdpClient'
+    workingDir = rootProject.projectDir
+    args hostArg, portArg
+    if (project.hasProperty('player')) {
+        args project.getProperty('player')
+    }
+}

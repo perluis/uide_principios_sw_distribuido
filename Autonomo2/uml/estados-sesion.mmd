@@ -1,0 +1,10 @@
+stateDiagram-v2
+    [*] --> WAITING_NAME : conexión
+    WAITING_NAME --> LOBBY : HELLO válido
+    LOBBY --> PLAYING : START
+    PLAYING --> PLAYING : GUESS / MORE / NEXT
+    PLAYING --> ASK_AGAIN : 3 aciertos o fin del tiempo
+    ASK_AGAIN --> PLAYING : PLAY_AGAIN true
+    ASK_AGAIN --> CLOSED : PLAY_AGAIN false
+    CLOSED --> [*]
+    note right of CLOSED : QUIT o desconexión cierran la sesión desde cualquier estado

@@ -1,0 +1,78 @@
+{
+  "personajes": [
+    {
+      "nombre": "Darth Vader",
+      "alias": ["Vader"],
+      "pelicula": "Star Wars",
+      "imagen": "vader.png",
+      "frases": [
+        "No. Yo soy tu padre.",
+        "Encuentro perturbadora su falta de fe.",
+        "La Fuerza es intensa en este.",
+        "No conoces el poder del lado oscuro."
+      ]
+    },
+    {
+      "nombre": "Yoda",
+      "alias": ["Maestro Yoda"],
+      "pelicula": "Star Wars",
+      "imagen": "yoda.png",
+      "frases": [
+        "Hazlo o no lo hagas, pero no lo intentes.",
+        "El tamaño no importa.",
+        "El miedo es el camino hacia el lado oscuro.",
+        "¿Por mi tamaño me juzgas?"
+      ]
+    },
+    {
+      "nombre": "Gandalf",
+      "alias": ["Gandalf el Gris", "Gandalf el Blanco"],
+      "pelicula": "El Señor de los Anillos",
+      "imagen": "gandalf.png",
+      "frases": [
+        "¡No puedes pasar!",
+        "Un mago nunca llega tarde, ni pronto. Llega exactamente cuando se lo propone.",
+        "Todo lo que tenemos que decidir es qué hacer con el tiempo que se nos ha dado.",
+        "¡Huyan, insensatos!"
+      ]
+    },
+    {
+      "nombre": "Forrest Gump",
+      "alias": ["Forrest"],
+      "pelicula": "Forrest Gump",
+      "imagen": "forrest.png",
+      "frases": [
+        "Mi mamá siempre decía que la vida es como una caja de chocolates: nunca sabes lo que te va a tocar.",
+        "Tonto es el que hace tonterías.",
+        "No soy un hombre listo, pero sé lo que es el amor.",
+        "Jenny y yo éramos como guisantes y zanahorias."
+      ]
+    },
+    {
+      "nombre": "Terminator",
+      "alias": ["T-800", "T800"],
+      "pelicula": "Terminator",
+      "imagen": "terminator.png",
+      "frases": [
+        "Volveré.",
+        "Hasta la vista, baby.",
+        "Necesito tu ropa, tus botas y tu motocicleta.",
+        "Ahora sé por qué lloran, pero es algo que yo nunca podré hacer."
+      ]
+    },
+    {
+      "nombre": "Buzz Lightyear",
+      "alias": ["Buzz"],
+      "pelicula": "Toy Story",
+      "imagen": "buzz.png",
+      "frases": [
+        "¡Al infinito y más allá!",
+        "Buzz Lightyear al Comando Estelar. Responda, Comando Estelar.",
+        "Soy Buzz Lightyear, guardián espacial de la Unidad de Protección del Universo.",
+        "Eres un hombrecito triste y extraño, y tienes mi lástima."
+      ]
+    }
+  ],
+  "imagenVictoria": "ganaste.png",
+  "imagenDerrota": "perdiste.png"
+}

@@ -1,0 +1,23 @@
+// Configuracion comun para los proyectos tcp y udp
+subprojects {
+    apply plugin: 'java'
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        // libreria para crear y leer mensajes JSON
+        implementation 'org.json:json:20240303'
+    }
+
+    // compila para Java 17, asi corre igual en Java 17 (Ubuntu) y Java 24 (Windows)
+    tasks.withType(JavaCompile).configureEach {
+        options.release = 17
+        options.encoding = 'UTF-8'
+    }
+
+    // valores por defecto: localhost y puerto 8080; se cambian con -Phost=... y -Pport=...
+    ext.hostArg = project.findProperty('host') ?: 'localhost'
+    ext.portArg = project.findProperty('port') ?: '8080'
+}

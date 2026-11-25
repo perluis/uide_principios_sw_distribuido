@@ -1,0 +1,23 @@
+// Juego completo por TCP
+// Servidor: gradle :tcp:runServer            (puerto 8080, partida de 60 segundos)
+// Cliente:  gradle :tcp:runClient            (localhost:8080)
+// Ejemplo remoto: gradle :tcp:runClient -Phost=192.168.0.164 -Pport=8080
+
+tasks.register('runServer', JavaExec) {
+    group = 'juego tcp'
+    description = 'Inicia el servidor TCP del juego'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'tcp.server.GameServer'
+    workingDir = rootProject.projectDir      // para encontrar img/ y guardar leaderboard.json
+    standardInput = System.in
+    args portArg, (project.findProperty('seconds') ?: '60')
+}
+
+tasks.register('runClient', JavaExec) {
+    group = 'juego tcp'
+    description = 'Inicia el cliente TCP con su ventana'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'tcp.client.GameClient'
+    workingDir = rootProject.projectDir
+    args hostArg, portArg
+}

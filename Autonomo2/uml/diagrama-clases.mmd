@@ -1,0 +1,100 @@
+classDiagram
+    direction LR
+    namespace tcp_server {
+        class GameServer {
+            +main(args)
+        }
+        class ClientSession {
+            -State state
+            -String playerName
+            -Game game
+            +run()
+            -handle(line)
+            -startGame()
+            -onTimeout(game)
+            -finishGame()
+        }
+        class Game {
+            +TARGET = 3
+            -int solved
+            -int score
+            -int attempts
+            +start()
+            +guess(answer) GuessOutcome
+            +moreQuote()
+            +skip()
+            +secondsLeft() int
+        }
+        class MovieCharacter {
+            -String name
+            -List~String~ quotes
+            -String imageBase64
+            +matches(answer) boolean
+        }
+        class CharacterBank {
+            +getCharacters()
+            +getWinImage()
+            +getLoseImage()
+        }
+        class Leaderboard {
+            -Path file
+            +record(name, score, won)
+            +top(limit) JSONArray
+        }
+        class Scoring {
+            +pointsFor(attempt)$ int
+        }
+    }
+    namespace tcp_protocol {
+        class Protocol {
+            <<constantes>>
+            +message(type, payload)$
+            +error(code, text)$
+        }
+        class JsonConnection {
+            +send(message)
+            +receiveLine() String
+        }
+        class ImageCodec {
+            +fileToBase64(file)$
+            +base64ToImage(text)$
+        }
+    }
+    namespace tcp_client {
+        class GameClient {
+            +main(args)
+        }
+        class ClientGui {
+            +start()
+            -handle(message)
+            -sendGuess()
+        }
+        class PicturePanel {
+            +setImage(image)
+        }
+        class OutputPanel {
+            +append(text)
+        }
+        class ServerConnection {
+            +send(message)
+            +close()
+        }
+    }
+    GameServer --> CharacterBank
+    GameServer --> Leaderboard
+    GameServer "1" --> "*" ClientSession : un hilo por cliente
+    ClientSession --> Game
+    ClientSession --> JsonConnection
+    ClientSession ..> Protocol
+    ClientSession --> Leaderboard
+    Game --> "*" MovieCharacter
+    Game ..> Scoring
+    CharacterBank --> "*" MovieCharacter
+    CharacterBank ..> ImageCodec
+    GameClient --> ClientGui
+    ClientGui --> PicturePanel
+    ClientGui --> OutputPanel
+    ClientGui --> ServerConnection
+    ClientGui ..> Protocol
+    ClientGui ..> ImageCodec
+    ServerConnection --> JsonConnection

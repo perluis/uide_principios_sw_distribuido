@@ -1,0 +1,17 @@
+sequenceDiagram
+    participant C as Cliente TCP (Windows)
+    participant S as Servidor TCP (VM Ubuntu)
+    C->>S: HELLO {name}
+    S-->>C: WELCOME {message, characters, leaderboard}
+    C->>S: START
+    S-->>C: QUOTE {image, quote, hint: 1, secondsLeft: 60}
+    C->>S: MORE
+    S-->>C: QUOTE {hint: 2}
+    C->>S: GUESS {answer}
+    S-->>C: RESULT {correct, points, score}
+    S-->>C: QUOTE (nuevo personaje)
+    Note over C,S: se repite hasta 3 aciertos o hasta que se acabe el minuto
+    S-->>C: GAME_OVER {won, image, leaderboard, question}
+    C->>S: PLAY_AGAIN {answer: false}
+    S-->>C: BYE {message}
+    Note over S: cierra la conexión y sigue aceptando clientes

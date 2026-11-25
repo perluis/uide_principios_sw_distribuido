@@ -1,0 +1,4 @@
+rootProject.name = 'juego-frases-peliculas'
+
+// Dos implementaciones separadas: el juego completo (tcp) y la version reducida (udp)
+include 'tcp', 'udp'
